@@ -8,7 +8,7 @@ export enum ErrorMessages{
     USER_EXIST= "Ya existe un usuario con esa identificación",
     SERVER_ERROR="Upps, ha ocurrido un error con el servidor",
     UNAUTHORIZED= "No tienes los permisos suficientes para ingresar a este apartado",
-    WRONG_PASS= "Contraseña incorrecta",
+    WRONG_PASS= "Usuario o contraseña incorrecta",
     WRONG_TOKEN= "Token Invalido",
     MAX_AMOUNT= "No se puede retirar mas productos que la cantidad existente"
 }

@@ -56,10 +56,9 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userName, passwordUser } = req.body;
     //validate if user exist on the database, any accept all
     const userExist = yield user_models_1.User.findOne({ where: { userName: userName } });
-    console.log(userExist.userRole);
     if (!userExist) {
         return res.status(400).json({
-            msg: `No se encontro un usuario con el nombre: ${userName}`
+            msg: manage_error_1.ErrorMessages.WRONG_PASS
         });
     }
     //validate password

@@ -12,7 +12,7 @@ var ErrorMessages;
     ErrorMessages["USER_EXIST"] = "Ya existe un usuario con esa identificaci\u00F3n";
     ErrorMessages["SERVER_ERROR"] = "Upps, ha ocurrido un error con el servidor";
     ErrorMessages["UNAUTHORIZED"] = "No tienes los permisos suficientes para ingresar a este apartado";
-    ErrorMessages["WRONG_PASS"] = "Contrase\u00F1a incorrecta";
+    ErrorMessages["WRONG_PASS"] = "Usuario o contrase\u00F1a incorrecta";
     ErrorMessages["WRONG_TOKEN"] = "Token Invalido";
     ErrorMessages["MAX_AMOUNT"] = "No se puede retirar mas productos que la cantidad existente";
 })(ErrorMessages || (exports.ErrorMessages = ErrorMessages = {}));

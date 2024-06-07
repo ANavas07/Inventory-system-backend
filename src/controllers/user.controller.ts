@@ -52,10 +52,9 @@ export const loginUser= async (req: Request, res:Response) =>{
 
     //validate if user exist on the database, any accept all
     const userExist: any=await User.findOne({where: {userName: userName}});
-    console.log(userExist.userRole)
     if(!userExist){
         return res.status(400).json({
-            msg: `No se encontro un usuario con el nombre: ${userName}`
+            msg: ErrorMessages.WRONG_PASS
         })
     }
     //validate password
