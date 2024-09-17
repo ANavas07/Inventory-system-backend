@@ -52,7 +52,25 @@ class Server {
     if body is in json convert data to js object*/
     middlewares() {
         this.app.use(express_1.default.json());
-        this.app.use((0, cors_1.default)());
+        this.app.use((0, cors_1.default)({
+            //origin: ['http://192.168.100.253:4200','localhost:4200'], // Solo permitir este dominio (comentar si es necesario)
+            methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+            allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
+        }));
+        //Security test changes
+        this.app.disable('x-powered-by'); // Eliminar la cabecera X-Powered-By
+        this.app.use(this.securityHeaders);
+    }
+    //Security changes (own middleware)
+    securityHeaders(req, res, next) {
+        res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.example.com; frame-src 'none'; object-src 'none'");
+        res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+        res.setHeader("X-Content-Type-Options", "nosniff");
+        res.setHeader("X-Frame-Options", "DENY");
+        res.setHeader("X-XSS-Protection", "1; mode=block");
+        res.setHeader("Referrer-Policy", "no-referrer");
+        res.setHeader("Permissions-Policy", "geolocation=(self), microphone=()");
+        next();
     }
     /*@dbConnect: Asynchronous function that creates the database based on
     sequel rules*/
