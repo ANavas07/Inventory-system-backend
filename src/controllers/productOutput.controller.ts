@@ -29,8 +29,6 @@ export const newProductOutput = async (req: Request, res: Response) => {
     let totalProductEstimated = 0;
     let totalCostEstimated = 0;
 
-
-
     for (let product of products) {
         //find the value of the product
         let productId = product.idProductBelong;

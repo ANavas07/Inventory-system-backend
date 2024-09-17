@@ -14,7 +14,7 @@ import {User,Category,DetailOutput,DetailRegistration,Product,ProductOutput,Prod
 class Server{
 
     private app: Application;
-    private port:String;
+    private port:string;
 
     constructor(){
         this.app=express();
@@ -27,7 +27,7 @@ class Server{
 
     //@app.listen(): initialize the web server on the specified port 
     listen(){
-        this.app.listen(this.port, () =>{
+        this.app.listen(parseInt(this.port), '0.0.0.0', () =>{
             console.log(`Application is running in port ${this.port}`);
         })
     }
